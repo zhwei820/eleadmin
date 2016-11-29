@@ -12,7 +12,7 @@
 <div id="app">
     <template>
 
-    <el-menu theme="dark" default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu theme="dark" default-active="1" class="el-menu-demo" mode="horizontal" >
       <el-menu-item index="1">处理中心</el-menu-item>
       <el-submenu index="2">
         <template slot="title">我的工作台</template>
@@ -27,19 +27,37 @@
     <!--sidebar start-->
         <el-col :span="4">
           <h5>带 icon</h5>
-          <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-            <el-submenu index="1">
+          <el-menu default-active="2" class="el-menu-vertical-demo" @select="handleSelect">
+            <el-submenu index="1" >
               <template slot="title"><i class="el-icon-message"></i>导航一</template>
               <el-menu-item-group title="分组一">
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
+                <el-menu-item index="/ele/table.html" >表格1</el-menu-item>
+                <el-menu-item index="/ele/form.html" >表单2</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
+                <el-menu-item index="/ele/card.html?a=1">选项3</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="2"><i class="el-icon-menu"></i>导航二</el-menu-item>
-            <el-menu-item index="3"><i class="el-icon-setting"></i>导航三</el-menu-item>
+            <el-submenu index="2" >
+              <template slot="title"><i class="el-icon-message"></i>导航二</template>
+              <el-menu-item-group title="分组一">
+                <el-menu-item index="/ele/table.html?t=1231" >表格1</el-menu-item>
+                <el-menu-item index="/ele/form.html?t=1231" >表单2</el-menu-item>
+              </el-menu-item-group>
+              <el-menu-item-group title="分组2">
+                <el-menu-item index="/ele/card.html">选项3</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
+            <el-submenu index="3" >
+              <template slot="title"><i class="el-icon-message"></i>导航三</template>
+              <el-menu-item-group title="分组一">
+                <el-menu-item index="/ele/table.html?t=123" >表格1</el-menu-item>
+                <el-menu-item index="/ele/form.html?t=123" >表单2</el-menu-item>
+              </el-menu-item-group>
+              <el-menu-item-group title="分组2">
+                <el-menu-item index="/ele/tooltip.html">tooltip</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
           </el-menu>
         </el-col>
     <!--sidebar end-->
@@ -132,6 +150,7 @@
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+        document.getElementById("checkListFrame").src = key
       },
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -169,35 +188,6 @@ new Ctor().$mount('#app')
 
 
 
-<script type="text/javascript">  
-    var iframeids = ["checkListFrame"]  
-    var iframehide = "yes"  
-    function dyniframesize() {  
-        var dyniframe = new Array()  
-        for (i = 0; i < iframeids.length; i++) {  
-            if (document.getElementById) {  
-                dyniframe[dyniframe.length] = document.getElementById(iframeids[i]);  
-                if (dyniframe[i] && !window.opera) {  
-                    dyniframe[i].style.display = "block"  
-                    if (dyniframe[i].contentDocument && dyniframe[i].contentDocument.body.offsetHeight)  
-                        dyniframe[i].height = dyniframe[i].contentDocument.body.offsetHeight;  
-                    else if (dyniframe[i].Document && dyniframe[i].Document.body.scrollHeight)  
-                        dyniframe[i].height = dyniframe[i].Document.body.scrollHeight;  
-                }  
-            }  
-            if ((document.all || document.getElementById) && iframehide == "no") {  
-                var tempobj = document.all ? document.all[iframeids[i]] : document.getElementById(iframeids[i])  
-                tempobj.style.display = "block"  
-            }  
-        }  
-    }  
-  
-    if (window.addEventListener)  
-        window.addEventListener("load", dyniframesize, false)  
-    else if (window.attachEvent)  
-        window.attachEvent("onload", dyniframesize)  
-    else  
-        window.onload = dyniframesize  
-  
-  
+<script type="text/javascript">   // iframe自动高度
+var iframeids=["checkListFrame"]var iframehide="yes"function dyniframesize(){var dyniframe=new Array()for(i=0;i<iframeids.length;i++){if(document.getElementById){dyniframe[dyniframe.length]=document.getElementById(iframeids[i]);if(dyniframe[i]&&!window.opera){dyniframe[i].style.display="block"if(dyniframe[i].contentDocument&&dyniframe[i].contentDocument.body.offsetHeight)dyniframe[i].height=dyniframe[i].contentDocument.body.offsetHeight;else if(dyniframe[i].Document&&dyniframe[i].Document.body.scrollHeight)dyniframe[i].height=dyniframe[i].Document.body.scrollHeight}}if((document.all||document.getElementById)&&iframehide=="no"){var tempobj=document.all?document.all[iframeids[i]]:document.getElementById(iframeids[i])tempobj.style.display="block"}}}if(window.addEventListener)window.addEventListener("load",dyniframesize,false)else if(window.attachEvent)window.attachEvent("onload",dyniframesize)else window.onload=dyniframesize
 </script>  
