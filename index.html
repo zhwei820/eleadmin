@@ -1,13 +1,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<script src="/ele/util.js"></script>
+<script src="/ele/js/util.js"></script>
 
-<link rel="stylesheet" type="text/css" href="base.css">
-<link rel="stylesheet" type="text/css" href="normalize.css">
-<script src="//unpkg.com/vue/dist/vue.js"></script>
-<script src="//unpkg.com/vue-resource@1.0.3/dist/vue-resource.min.js"></script>
-<script src="//unpkg.com/element-ui/lib/index.js"></script>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<script src="/ele/vue/vue.js"></script>
+<script src="/ele/vue/vue-resource.min.js"></script>
+<script src="/ele/vue/index.js"></script>
 <div id="app">
     <template>
 
@@ -43,12 +43,13 @@
         </el-col>
     <!--sidebar end-->
 
-          <el-col :span=20>
-              <iframe src="/ele/table.html" frameborder="0" width="100%" height="100%" scrolling="auto"></iframe>
-          </el-col>
+    <el-col :span=20>
+        <iframe id="checkListFrame" src="/ele/table.html" frameborder="0" width="100%" height="90%" scrolling="auto"></iframe>
+    </el-col>
 
     </el-row>
 
+    
     <div id="footer">
       <hr>
       <footer class="text-center">
@@ -164,3 +165,38 @@
 var Ctor = Vue.extend(Main)
 new Ctor().$mount('#app')
 </script>
+
+
+
+<script type="text/javascript">  
+    var iframeids = ["checkListFrame"]  
+    var iframehide = "yes"  
+    function dyniframesize() {  
+        var dyniframe = new Array()  
+        for (i = 0; i < iframeids.length; i++) {  
+            if (document.getElementById) {  
+                dyniframe[dyniframe.length] = document.getElementById(iframeids[i]);  
+                if (dyniframe[i] && !window.opera) {  
+                    dyniframe[i].style.display = "block"  
+                    if (dyniframe[i].contentDocument && dyniframe[i].contentDocument.body.offsetHeight)  
+                        dyniframe[i].height = dyniframe[i].contentDocument.body.offsetHeight;  
+                    else if (dyniframe[i].Document && dyniframe[i].Document.body.scrollHeight)  
+                        dyniframe[i].height = dyniframe[i].Document.body.scrollHeight;  
+                }  
+            }  
+            if ((document.all || document.getElementById) && iframehide == "no") {  
+                var tempobj = document.all ? document.all[iframeids[i]] : document.getElementById(iframeids[i])  
+                tempobj.style.display = "block"  
+            }  
+        }  
+    }  
+  
+    if (window.addEventListener)  
+        window.addEventListener("load", dyniframesize, false)  
+    else if (window.attachEvent)  
+        window.attachEvent("onload", dyniframesize)  
+    else  
+        window.onload = dyniframesize  
+  
+  
+</script>  
