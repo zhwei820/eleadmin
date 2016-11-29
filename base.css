@@ -4,3 +4,7 @@
     display: inline-block;
     float: right;
 }
+.text-center {
+    text-align: center;
+    font-size: 10;
+}
