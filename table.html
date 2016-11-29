@@ -185,7 +185,6 @@
         this.tableData = this.tableData1.slice(val * this.pageSize, (val + 1) * this.pageSize )
       },
       saveExcel(){
-        debugger
         excel([this.tableHead].concat(this.tableData1), "aaa", "xls")
       }
     }
