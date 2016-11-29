@@ -1,6 +1,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
+<script src="/ele/js/fileSaver.js"></script>
 <script src="/ele/js/util.js"></script>
 
 <link rel="stylesheet" type="text/css" href="vue/index.css">
@@ -25,6 +26,7 @@
               错误
           </el-button>
 
+          <el-button type="primary" icon="more" class="right_search" @click="saveExcel"></el-button>
           <el-input placeholder="搜索" class="right_search" icon="search" v-model="input2" @click="handleIconClick" @keyup.enter.native="handleIconClick">
           </el-input>
 
@@ -40,17 +42,17 @@
                   </div>
               </el-table-column>
 
-              <el-table-column fixed prop="date" label="日期" width="150">
+              <el-table-column fixed prop="date" :label=tableHead.date width="150">
               </el-table-column>
-              <el-table-column prop="name" label="姓名" width="120">
+              <el-table-column prop="name" :label=tableHead.name width="120">
               </el-table-column>
-              <el-table-column prop="province" label="省份" width="120">
+              <el-table-column prop="province" :label=tableHead.province width="120">
               </el-table-column>
-              <el-table-column prop="city" label="市区" width="120">
+              <el-table-column prop="city" :label=tableHead.city width="120">
               </el-table-column>
-              <el-table-column prop="address" label="地址" width="300">
+              <el-table-column prop="address" :label=tableHead.address width="300">
               </el-table-column>
-              <el-table-column prop="zip" label="邮编" width="120">
+              <el-table-column prop="zip" :label=tableHead.zip width="120">
               </el-table-column>
           </el-table>
 
@@ -69,6 +71,14 @@
     data() {
       return {
         input2: "",
+        tableHead: {
+            "date": "日期",
+            "name": "姓名",
+            "province": "省份",
+            "city": "市区",
+            "address": "地址",
+            "zip": "邮编",
+        },
         tableData1: [],
         tableData: [],
         tablePage: 1,
@@ -76,6 +86,7 @@
         totalNum: 1,
       }
     },
+
     beforeMount: function(){
         this.$http.get("/ele/echo.php?").then((response) => {
           if (response.status !== 200) {
@@ -170,8 +181,12 @@
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
-        this.tablePage = val
+        // this.tablePage = val
         this.tableData = this.tableData1.slice(val * this.pageSize, (val + 1) * this.pageSize )
+      },
+      saveExcel(){
+        debugger
+        excel([this.tableHead].concat(this.tableData1), "aaa", "xls")
       }
     }
   }
