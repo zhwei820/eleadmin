@@ -182,7 +182,7 @@
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
         // this.tablePage = val
-        this.tableData = this.tableData1.slice(val * this.pageSize, (val + 1) * this.pageSize )
+        this.tableData = this.tableData1.slice((val - 1) * this.pageSize, (val) * this.pageSize )
       },
       saveExcel(){
         excel([this.tableHead].concat(this.tableData1), "aaa", "xls")
