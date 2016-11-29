@@ -1,6 +1,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
+<script src="/ele/util.js"></script>
+
 <link rel="stylesheet" type="text/css" href="table.css">
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/vue-resource@1.0.3/dist/vue-resource.min.js"></script>
@@ -174,22 +176,25 @@
       },
         handleIconClick(ev) {
             if(this.tableData1.length == 0){
-                this.tableData1 = this.tableData
+                // this.tableData1 = this.tableData.Clone()
+                extend(this.tableData1, this.tableData);
             }
-            var tmp = []
-            for(var ii = 0; ii < this.tableData1.length; ii ++)
-            {
-                for(var jj in this.tableData1[ii])
-                {
-                    if(("" + this.tableData1[ii][jj]).indexOf(this.input2) > 0){
-                        console.log("" + this.tableData1[ii][jj]);
-                        
-                        tmp.push(this.tableData1[ii])
-                        break
-                    }
-                }
+            if(this.input2){
+              var tmp = []
+              for(var ii = 0; ii < this.tableData1.length; ii ++)
+              {
+                  for(var jj in this.tableData1[ii])
+                  {
+                      if(("" + this.tableData1[ii][jj]).indexOf(this.input2) >= 0){
+                          tmp.push(this.tableData1[ii])
+                          break
+                      }
+                  }
+              }
+              this.tableData = tmp
+            }else{
+              this.tableData = this.tableData1
             }
-            this.tableData = tmp
         }
     }
   }
