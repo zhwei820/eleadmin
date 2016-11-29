@@ -1,0 +1,6 @@
+@import url("//unpkg.com/element-ui/lib/theme-default/index.css");
+
+.right_search{
+    display: inline-block;
+    float: right;
+}
