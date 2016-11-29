@@ -3,6 +3,7 @@
 </head>
 <script src="/ele/js/util.js"></script>
 
+<link rel="stylesheet" type="text/css" href="vue/index.css">
 <link rel="stylesheet" type="text/css" href="css/base.css">
 <link rel="stylesheet" type="text/css" href="css/normalize.css">
 <script src="/ele/vue/vue.js"></script>
@@ -55,7 +56,8 @@
 
           <div class="block">
             <!--<span class="demonstration">完整功能</span>-->
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="5" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="tablePage" :page-sizes="[100, 200, 300, 400]" :page-size="pageSize" 
+            layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
             </el-pagination>
           </div>
 
@@ -69,6 +71,9 @@
         input2: "",
         tableData1: [],
         tableData: [],
+        tablePage: 1,
+        pageSize: 100,
+        totalNum: 1,
       }
     },
     beforeMount: function(){
@@ -79,7 +84,9 @@
               message: '请求失败, 请重试'
             }); 
           }
-          this.tableData = JSON.parse(response.data)  
+          this.tableData1 = JSON.parse(response.data)
+          this.tableData = this.tableData1.slice(0, this.pageSize ) 
+          this.totalNum = this.tableData1.length    
         }, (response) => {
           this.$message({
             type: 'info',
@@ -141,10 +148,6 @@
         console.log(key, keyPath);
       },
         handleIconClick(ev) {
-            if(this.tableData1.length == 0){
-                // this.tableData1 = this.tableData.Clone()
-                extend(this.tableData1, this.tableData);
-            }
             if(this.input2){
               var tmp = []
               for(var ii = 0; ii < this.tableData1.length; ii ++)
@@ -167,6 +170,8 @@
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
+        this.tablePage = val
+        this.tableData = this.tableData1.slice(val * this.pageSize, (val + 1) * this.pageSize )
       }
     }
   }
