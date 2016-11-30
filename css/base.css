@@ -22,3 +22,6 @@
 .breadcrumb_padding {
     padding: 5px;
 }
+.hide {
+    display: none;
+}

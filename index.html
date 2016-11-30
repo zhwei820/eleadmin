@@ -28,9 +28,9 @@
     <!--sidebar start-->
         <el-col :span="4">
           <!--<h5>菜单</h5>-->
-          <el-menu class="el-menu-vertical-demo" @select="handleSelect" v-for="submenus in menus">
+          <el-menu class="el-menu-vertical-demo" @select="handleSelect" @open="handleOpen" uniqueOpened=true >
 
-            <el-submenu :index="submenus.id" >
+            <el-submenu :index="submenus.id" v-for="submenus in menus">
               <template slot="title"><i class="el-icon-message"></i>{{submenus.text}}</template>  
               <el-menu-item :index="submenu.uri" v-for="submenu in submenus.items">{{submenu.text}}</el-menu-item>
             </el-submenu>
@@ -138,6 +138,11 @@
         document.getElementById("checkListFrame").src = key
         this.breadcrumb1 = this.menus1[keyPath[0]]['text']
         this.breadcrumb2 = this.menus1[keyPath[0]][keyPath[1]]['text']
+      },
+      handleOpen(key, keyPath) {
+        // debugger
+        // $(".el-submenu").removeClass("is-opened")
+        // $("ul[class='el-menu']").css('display','none'); 
       },
     }
   }
