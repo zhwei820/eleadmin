@@ -107,7 +107,7 @@ var Main = {
 
             this.$http.options.emulateJSON = true
 
-            this.$http.post("/ele/echo.php?", {'data': JSON.stringify(paramData)}).then((response) => {
+            this.$http.post("/ele/echo.php?", this.ruleForm).then((response) => {
               if (response.status !== 200) {
                 this.$message({
                   type: 'info',
