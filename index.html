@@ -63,6 +63,11 @@
     <!--sidebar end-->
 
     <el-col :span=20>
+        <el-breadcrumb separator="/" class="breadcrumb_padding">
+          <el-breadcrumb-item >首页</el-breadcrumb-item>
+          <el-breadcrumb-item>{{breadcrumb_1}}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{breadcrumb_2}}</el-breadcrumb-item>
+        </el-breadcrumb>
         <iframe id="checkListFrame" src="/ele/table.html" frameborder="0" width="100%" height="90%" scrolling="auto"></iframe>
     </el-col>
 
@@ -83,110 +88,19 @@
     var Main = {
     data() {
       return {
-        input2: "",
-        tableData1: [],
-        tableData: [],
+        breadcrumb_1 : "dashboard",
+        breadcrumb_2 : "",
       }
     },
-    beforeMount: function(){
-        this.$http.get("/ele/echo.php?").then((response) => {
-          if (response.status !== 200) {
-            this.$message({
-              type: 'info',
-              message: '请求失败, 请重试'
-            }); 
-          }
-          this.tableData = JSON.parse(response.data)  
-        }, (response) => {
-          this.$message({
-            type: 'info',
-            message: '请求失败, 请重试'
-          }); 
-        });
-    },
     methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-      },
-      handleDelete(index, row) {
-        console.log(index, row);
-      },
-      open3() {
-        this.$notify({
-          title: '成功',
-          message: '这是一条成功的提示消息',
-          type: 'success'
-        });
-      },
-
-      open4() {
-        this.$notify({
-          title: '警告',
-          message: '这是一条警告的提示消息',
-          type: 'warning'
-        });
-      },
-
-      open5() {
-        this.$notify.info({
-          title: '消息',
-          message: '这是一条消息的提示消息'
-        });
-
-        setInterval(function(){
-            this.$notify.info({
-            title: '消息',
-            message: '这是一条消息的提示消息'
-            });
-        }.bind(this), 200)
-
-      },
-
-      open6() {
-        this.$notify.error({
-          title: '错误',
-          message: '这是一条错误的提示消息'
-        });
-      },
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
         document.getElementById("checkListFrame").src = key
       },
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      },
-        handleIconClick(ev) {
-            if(this.tableData1.length == 0){
-                // this.tableData1 = this.tableData.Clone()
-                extend(this.tableData1, this.tableData);
-            }
-            if(this.input2){
-              var tmp = []
-              for(var ii = 0; ii < this.tableData1.length; ii ++)
-              {
-                  for(var jj in this.tableData1[ii])
-                  {
-                      if(("" + this.tableData1[ii][jj]).indexOf(this.input2) >= 0){
-                          tmp.push(this.tableData1[ii])
-                          break
-                      }
-                  }
-              }
-              this.tableData = tmp
-            }else{
-              this.tableData = this.tableData1
-            }
-        }
     }
   }
 var Ctor = Vue.extend(Main)
 new Ctor().$mount('#app')
 </script>
-
-
 
 <script type="text/javascript">   // iframe自动高度
 var iframeids=["checkListFrame"]var iframehide="yes"function dyniframesize(){var dyniframe=new Array()for(i=0;i<iframeids.length;i++){if(document.getElementById){dyniframe[dyniframe.length]=document.getElementById(iframeids[i]);if(dyniframe[i]&&!window.opera){dyniframe[i].style.display="block"if(dyniframe[i].contentDocument&&dyniframe[i].contentDocument.body.offsetHeight)dyniframe[i].height=dyniframe[i].contentDocument.body.offsetHeight;else if(dyniframe[i].Document&&dyniframe[i].Document.body.scrollHeight)dyniframe[i].height=dyniframe[i].Document.body.scrollHeight}}if((document.all||document.getElementById)&&iframehide=="no"){var tempobj=document.all?document.all[iframeids[i]]:document.getElementById(iframeids[i])tempobj.style.display="block"}}}if(window.addEventListener)window.addEventListener("load",dyniframesize,false)else if(window.attachEvent)window.attachEvent("onload",dyniframesize)else window.onload=dyniframesize
