@@ -28,7 +28,7 @@
     <!--sidebar start-->
         <el-col :span="4">
           <!--<h5>菜单</h5>-->
-          <el-menu class="el-menu-vertical-demo" @select="handleSelect" @open="handleOpen" uniqueOpened=true >
+          <el-menu class="el-menu-vertical-demo" @select="handleSelect" @open="handleOpen" unique-opened=true >
 
             <el-submenu :index="submenus.id" v-for="submenus in menus">
               <template slot="title"><i class="el-icon-message"></i>{{submenus.text}}</template>  
