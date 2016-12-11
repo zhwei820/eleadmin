@@ -1,0 +1,334 @@
+@charset "UTF-8";
+	.footer {
+	width:100%;
+	margin:0 auto;
+	background:#f84e4e;
+	position:relative;
+	bottom:0
+}
+
+
+.toast-box {
+	position:fixed;
+	min-width:100px;
+	max-width:200px;
+	z-index:999;
+	top:50px;
+	left:20px;
+	border-radius:2px;
+	padding:10px;
+	text-align:center;
+	background-color:rgba(51,51,51,.9);
+	color:#fff;
+	box-shadow:0 0 2px 2px rgba(0,0,0,.3);
+	-webkit-box-shadow:0 0 2px 2px rgba(0,0,0,.3);
+	-webkit-transition:opacity .3s linear;
+	transition:opacity .3s linear;
+	z-index:1111111
+}
+.modals-backdrop {
+	position:fixed;
+	display:none;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	z-index:111111;
+	background:rgba(0,0,0,.5);
+	background:#333 \9
+}
+.modal {
+	position:fixed;
+	display:none;
+	top:50%;
+	left:50%;
+	z-index:111111;
+	width:385px;
+	background-color:#fff;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:10px;
+	-webkit-box-shadow:0 3px 7px rgba(0,0,0,.3);
+	-moz-box-shadow:0 3px 7px rgba(0,0,0,.3);
+	box-shadow:0 3px 7px rgba(0,0,0,.3);
+	-webkit-background-clip:padding-box;
+	-moz-background-clip:padding-box;
+	background-clip:padding-box;
+	overflow:hidden
+}
+.normal-modals {
+	white-space:pre-wrap
+}
+.normal-modals h3 {
+	font-size:18px;
+	color:#333;
+	margin-top:35px;
+	margin-bottom:15px
+}
+.normal-modals p,.normal-modals a {
+	font-size:14px;
+	color:#666;
+	line-height:26px
+}
+.normal-modals a {
+	cursor:pointer
+}
+
+a {
+	background:transparent;
+	text-decoration:none;
+	-webkit-tap-highlight-color:transparent;
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	outline:0
+}
+a:visited,a:hover,a:active {
+	outline:0;
+	text-decoration:none
+}
+
+
+.clearfix {
+	*zoom:1;
+	display:block
+}
+.clearfix:after,.clearfix:before {
+	display:table;
+	line-height:0;
+	content:""
+}
+.clearfix:after {
+	clear:both
+}
+body,div,span,form,input,h1,h2,h3,h4,h6,p,a,em,img,b,dl,dt,dd,ul,li,label {
+	margin:0;
+	padding:0
+}
+body {
+	font-family:FZLanTingHei-EL-GBK,"Open Sans","Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,"WenQuanYi Micro Hei",Dengxian,Arial,SimSun,sans-serif;
+	background-color:#fff;
+	-webkit-font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+	line-height:1.5;
+	word-wrap:break-word;
+	font-size:16px;
+	color:#333
+}
+html {
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+	display:block
+}
+audio,canvas,progress,video {
+	display:inline-block;
+	vertical-align:baseline
+}
+audio:not([controls]) {
+	display:none;
+	height:0
+}
+[hidden],template {
+	display:none
+}
+
+.wrapper {
+	margin:0 auto;
+	width:980px;
+	position:relative
+}
+
+.copyright {
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px
+}
+.copyright {
+	color:#fff;
+	font-size:12px
+}
+.copyright a:link,.copyright a:visited,.copyright a:hover {
+	color:#fff;
+	text-decoration:none;
+	vertical-align:middle
+}
+html,body {
+	height:100%;
+	margin:0;
+	padding:0
+}
+.main-wrapper {
+	display:table;
+	height:100%;
+	width:100%
+}
+.footer {
+	display:table-row;
+	height:1px
+}
+.header {
+	right:0;
+	left:0;
+	border-radius:0;
+	top:0;
+	z-index:9999
+}
+.header .container-fixed-width {
+	margin:0 auto;
+	width:980px;
+	position:relative
+}
+.header .head-left {
+	width:770px;
+	float:left
+}
+.header .head-right {
+	width:150px;
+	float:right;
+	height:84px
+}
+.header-logo {
+	display:block;
+	background:url(http://static.liwushuo.com/static/web/img/base-layout/logo_9699ecd.png);
+	background-size:100%;
+	-ms-behavior:url(/static/web/css/web/style/css/com/htc/backgroundsize.min.htc);
+	behavior:url(/static/web/css/web/style/css/com/htc/backgroundsize.min.htc);
+	width:260px;
+	height:30px;
+	margin-top:28px;
+	float:left
+}
+#header-nav {
+	height:40px;
+	background:#f84e4e;
+	clear:both;
+	width:100%;
+	z-index:111111;
+	behavior:url(/static/web/css/web/style/css/com/htc/pie.htc)
+}
+.top-nav-link li {
+	display:inline-block
+}
+.nav-top-bar {
+	height:40px;
+	font-size:15px;
+	color:#fff;
+	box-sizing:border-box;
+	width:140px;
+	float:left
+}
+.nav-top-bar .ntba {
+	position:relative;
+	height:20px;
+	line-height:20px;
+	color:#fff;
+	text-align:right;
+	padding:10px 31px;
+	z-index:111111
+}
+.nav-top-bar .ntba:after {
+	content:" ";
+	background:url(http://static.liwushuo.com/static/web/img/base-layout/arrow_pulldown_d8d45bc.png);
+	display:inline-block;
+	width:7px;
+	height:4px;
+	vertical-align:middle;
+	margin-top:0;
+	position:relative;
+	left:5px
+}
+.nav-top-bar .ntba.active {
+	background:#e32f2f
+}
+.nav-top-bar:hover .ntba {
+	background:#e32f2f
+}
+.nav-top-bar:hover #ntba-home {
+	background:#e32f2f
+}
+.nav-top-bar:hover #ntba-download {
+	background:#e32f2f
+}
+#ntba-home {
+	position:relative;
+	height:20px;
+	line-height:20px;
+	color:#fff;
+	text-align:center;
+	padding:10px 31px;
+	z-index:111111
+}
+#ntba-home.active {
+	background:#e32f2f
+}
+nav a {
+	display:block;
+	color:#fff
+}
+nav ul ul {
+	position:absolute;
+	top:40px;
+	display:none;
+	background:#fff;
+	overflow:hidden;
+	width:138px;
+	text-align:center;
+	border:1px solid #E3E3E3;
+	box-shadow:0 0 10px rgba(0,0,0,.12);
+	border-radius:0;
+	z-index:11111
+}
+nav ul li:hover>ul {
+	display:block
+}
+nav ul ul li {
+	float:left;
+	position:relative;
+	height:34px;
+	width:100%;
+	line-height:36px
+}
+nav ul ul li a {
+	height:33px;
+	margin:0 10px;
+	border-bottom:#c8c7cc dotted 1px;
+	color:#555
+}
+nav ul ul li:hover {
+	background:#f7f7f7
+}
+nav ul ul li:hover a {
+	color:#f84e4e
+}
+nav ul ul li:last-child a {
+	border-bottom:0
+}
+nav ul li:hover {
+	opacity:1
+}
+#ntba-download {
+	position:relative;
+	height:20px;
+	line-height:20px;
+	text-align:right;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:20px;
+	z-index:111111
+}
+#ntba-download:before {
+	content:" ";
+	background:url(http://static.liwushuo.com/static/web/img/base-layout/icon_download_nav_d86e83c.png);
+	display:inline-block;
+	width:14px;
+	height:24px;
+	vertical-align:middle;
+	margin-top:0;
+	position:relative;
+	top:-3px;
+	left:-8px
+}
+#ntba-download.active {
+	background:#e32f2f
+}
