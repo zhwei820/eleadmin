@@ -94,11 +94,21 @@
         tableHead: {
             "date": "日期",
             "name": "姓名",
+            "test": "test",
             "province": "省份",
             "city": "市区",
             "address": "地址",
             "zip": "邮编",
         },
+        tableHeadKeys: [
+            "date",
+            "name",
+            "test",
+            "province",
+            "city",
+            "address",
+            "zip",
+        ],
         tableData1: [],
         tableData: [],
         tablePage: 1,
@@ -218,7 +228,7 @@
         this.tableData = this.tableData1.slice((val - 1) * this.pageSize, (val) * this.pageSize )
       },
       saveExcel(){
-        excel([this.tableHead].concat(this.tableData1), "aaa", "xls")
+        excel([this.tableHead].concat(this.tableData1), this.tableHeadKeys, "aaa", "xls")
       }
     }
   }
