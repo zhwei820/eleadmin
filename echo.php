@@ -1,4 +1,7 @@
 <?php
+// echo "qqqqqqqqqqqqqq";
+// sleep(1);
+// die();
 $a = [];
 for ($i = 0; $i < 50; $i++) {
     $tmp = [];
@@ -12,5 +15,6 @@ for ($i = 0; $i < 50; $i++) {
     $tmp["zip"] = 20033 + $i;
 
     $a[] = $tmp;
+
 }
 echo json_encode($a, JSON_UNESCAPED_UNICODE);
